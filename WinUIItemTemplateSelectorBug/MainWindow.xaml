@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="WinUIItemTemplateSelectorBug.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIItemTemplateSelectorBug"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:templateselector="using:WinUIItemTemplateSelectorBug.TemplateSelector"
+    xmlns:viewmodel="using:WinUIItemTemplateSelectorBug.ViewModel"
+    mc:Ignorable="d">
+    <StackPanel>
+        <TextBlock
+            Margin="20"
+            HorizontalAlignment="Center"
+            FontSize="55"
+            Text="Fast croll any of the views to Crash" />
+        <Grid Height="500" VerticalAlignment="Top">
+            <Grid.Resources>
+                <templateselector:TestTemplateSelector
+                    x:Key="ListViewSelector"
+                    TemplateTestVM1="{StaticResource ListViewItemTemplate1}"
+                    TemplateTestVM2="{StaticResource ListViewItemTemplate2}" />
+                <DataTemplate x:Key="ListViewItemTemplate1" x:DataType="viewmodel:TestVM1">
+                    <ListViewItem>
+                        <TextBlock Text="{x:Bind Content1}" />
+                    </ListViewItem>
+                </DataTemplate>
+                <DataTemplate x:Key="ListViewItemTemplate2" x:DataType="viewmodel:TestVM2">
+                    <ListViewItem>
+                        <TextBlock Text="{x:Bind Content2}" />
+                    </ListViewItem>
+                </DataTemplate>
+                <templateselector:TestTemplateSelector
+                    x:Key="GridViewSelector"
+                    TemplateTestVM1="{StaticResource GridViewItemTemplate1}"
+                    TemplateTestVM2="{StaticResource GridViewItemTemplate2}" />
+                <DataTemplate x:Key="GridViewItemTemplate1" x:DataType="viewmodel:TestVM1">
+                    <GridViewItem>
+                        <TextBlock Text="{x:Bind Content1}" />
+                    </GridViewItem>
+                </DataTemplate>
+                <DataTemplate x:Key="GridViewItemTemplate2" x:DataType="viewmodel:TestVM2">
+                    <GridViewItem>
+                        <TextBlock Text="{x:Bind Content2}" />
+                    </GridViewItem>
+                </DataTemplate>
+                <templateselector:TestTemplateSelector
+                    x:Key="TreeViewSelector"
+                    TemplateTestVM1="{StaticResource TreeViewItemTemplate1}"
+                    TemplateTestVM2="{StaticResource TreeViewItemTemplate2}" />
+                <DataTemplate x:Key="TreeViewItemTemplate1" x:DataType="viewmodel:TestVM1">
+                    <TreeViewItem>
+                        <TextBlock Text="{x:Bind Content1}" />
+                    </TreeViewItem>
+                </DataTemplate>
+                <DataTemplate x:Key="TreeViewItemTemplate2" x:DataType="viewmodel:TestVM2">
+                    <TreeViewItem>
+                        <TextBlock Text="{x:Bind Content2}" />
+                    </TreeViewItem>
+                </DataTemplate>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Border
+                Width="200"
+                BorderBrush="AliceBlue"
+                BorderThickness="3">
+                <ListView
+                    Header="ListView"
+                    ItemTemplateSelector="{StaticResource ListViewSelector}"
+                    ItemsSource="{x:Bind CollectionViewModel}" />
+            </Border>
+            <Border
+                Grid.Column="1"
+                Width="200"
+                BorderBrush="AliceBlue"
+                BorderThickness="3">
+                <GridView
+                    Header="GridView"
+                    ItemTemplateSelector="{StaticResource GridViewSelector}"
+                    ItemsSource="{x:Bind CollectionViewModel}" />
+            </Border>
+            <Border
+                Grid.Column="2"
+                Width="200"
+                BorderBrush="AliceBlue"
+                BorderThickness="3">
+                <TreeView ItemTemplateSelector="{StaticResource TreeViewSelector}" ItemsSource="{x:Bind CollectionViewModel}" />
+            </Border>
+        </Grid>
+    </StackPanel>
+</Window>

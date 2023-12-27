@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WinUIItemTemplateSelectorBug (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WinUIItemTemplateSelectorBug (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
