@@ -20,11 +20,11 @@ public sealed partial class MainWindow : Window
         {
             if (i % 2 == 0)
             {
-                CollectionViewModel.Add(new TestVM1());
+                CollectionViewModel.Add(new TestVM1() { Items = [new TestVM1(), new TestVM2()] });
             }
             else
             {
-                CollectionViewModel.Add(new TestVM2());
+                CollectionViewModel.Add(new TestVM2() { Items = [new TestVM2(), new TestVM1()] });
             }
         }
         InitializeComponent();

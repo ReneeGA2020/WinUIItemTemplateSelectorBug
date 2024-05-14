@@ -50,12 +50,12 @@
                     TemplateTestVM1="{StaticResource TreeViewItemTemplate1}"
                     TemplateTestVM2="{StaticResource TreeViewItemTemplate2}" />
                 <DataTemplate x:Key="TreeViewItemTemplate1" x:DataType="viewmodel:TestVM1">
-                    <TreeViewItem>
+                    <TreeViewItem ItemsSource="{x:Bind Items}">
                         <TextBlock Text="{x:Bind Content1}" />
                     </TreeViewItem>
                 </DataTemplate>
                 <DataTemplate x:Key="TreeViewItemTemplate2" x:DataType="viewmodel:TestVM2">
-                    <TreeViewItem>
+                    <TreeViewItem ItemsSource="{x:Bind Items}">
                         <TextBlock Text="{x:Bind Content2}" />
                     </TreeViewItem>
                 </DataTemplate>
