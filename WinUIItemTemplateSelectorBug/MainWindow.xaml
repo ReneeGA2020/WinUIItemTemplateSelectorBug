@@ -22,31 +22,42 @@
                     TemplateTestVM1="{StaticResource ListViewItemTemplate1}"
                     TemplateTestVM2="{StaticResource ListViewItemTemplate2}" />
                 <DataTemplate x:Key="ListViewItemTemplate1" x:DataType="viewmodel:TestVM1">
-
-                    <TextBlock Text="{x:Bind Content1}" />
+                    <ListViewItem>
+                        <TextBlock Text="{x:Bind Content1}" />
+                    </ListViewItem>
                 </DataTemplate>
                 <DataTemplate x:Key="ListViewItemTemplate2" x:DataType="viewmodel:TestVM2">
-                    <TextBlock Text="{x:Bind Content2}" />
+                    <ListViewItem>
+                        <TextBlock Text="{x:Bind Content2}" />
+                    </ListViewItem>
                 </DataTemplate>
                 <templateselector:TestTemplateSelector
                     x:Key="GridViewSelector"
                     TemplateTestVM1="{StaticResource GridViewItemTemplate1}"
                     TemplateTestVM2="{StaticResource GridViewItemTemplate2}" />
                 <DataTemplate x:Key="GridViewItemTemplate1" x:DataType="viewmodel:TestVM1">
-                    <TextBlock Text="{x:Bind Content1}" />
+                    <GridViewItem>
+                        <TextBlock Text="{x:Bind Content1}" />
+                    </GridViewItem>
                 </DataTemplate>
                 <DataTemplate x:Key="GridViewItemTemplate2" x:DataType="viewmodel:TestVM2">
-                    <TextBlock Text="{x:Bind Content2}" />
+                    <GridViewItem>
+                        <TextBlock Text="{x:Bind Content2}" />
+                    </GridViewItem>
                 </DataTemplate>
                 <templateselector:TestTemplateSelector
                     x:Key="TreeViewSelector"
                     TemplateTestVM1="{StaticResource TreeViewItemTemplate1}"
                     TemplateTestVM2="{StaticResource TreeViewItemTemplate2}" />
                 <DataTemplate x:Key="TreeViewItemTemplate1" x:DataType="viewmodel:TestVM1">
-                    <TextBlock Text="{x:Bind Content1}" />
+                    <TreeViewItem ItemsSource="{x:Bind Items}">
+                        <TextBlock Text="{x:Bind Content1}" />
+                    </TreeViewItem>
                 </DataTemplate>
                 <DataTemplate x:Key="TreeViewItemTemplate2" x:DataType="viewmodel:TestVM2">
-                    <TextBlock Text="{x:Bind Content2}" />
+                    <TreeViewItem ItemsSource="{x:Bind Items}">
+                        <TextBlock Text="{x:Bind Content2}" />
+                    </TreeViewItem>
                 </DataTemplate>
             </Grid.Resources>
             <Grid.ColumnDefinitions>

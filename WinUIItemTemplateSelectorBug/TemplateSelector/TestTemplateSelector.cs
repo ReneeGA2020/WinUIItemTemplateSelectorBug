@@ -8,31 +8,23 @@ public class TestTemplateSelector : DataTemplateSelector
     public DataTemplate? TemplateTestVM1 { get; set; }
 
     public DataTemplate? TemplateTestVM2 { get; set; }
+    protected override DataTemplate SelectTemplateCore(object item)
+    {
+        return GetTemplate(item) ?? base.SelectTemplateCore(item);
+    }
 
     protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
     {
-        return GetTemplate(item, container) ?? base.SelectTemplateCore(item, container);
+        return GetTemplate(item) ?? base.SelectTemplateCore(item, container);
     }
 
-    private DataTemplate? GetTemplate(object item, DependencyObject container)
+    private DataTemplate? GetTemplate(object item)
     {
-        var template = item switch
+        return item switch
         {
             TestVM1 => TemplateTestVM1,
             TestVM2 => TemplateTestVM2,
             _ => null,
         };
-        if(container is TreeViewItem element)
-        {
-            if (item is TestVM1 a)
-            {
-                element.ItemsSource = a.Items;
-            }
-            else if (item is TestVM2 b)
-            {
-                element.ItemsSource = b.Items;
-            }
-        }
-        return template;
     }
 }
